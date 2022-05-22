@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -52,5 +53,10 @@ public class GreetingController {
     @GetMapping("/findGreeting")
     public ResponseEntity<String> findGreeting(@RequestParam Integer id){
         return new ResponseEntity<String>(greetingService.getData(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/findAllGreeting")
+    public ResponseEntity<List<Greeting>> findAllGreeting(){
+        return new ResponseEntity<List<Greeting>>(greetingService.getAllData(),HttpStatus.OK);
     }
 }

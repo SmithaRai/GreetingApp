@@ -6,6 +6,8 @@ import com.bridgelabz.greetingapp.model.User;
 import com.bridgelabz.greetingapp.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 
 public class GreetingService {
 
@@ -31,5 +33,9 @@ public class GreetingService {
     public String getData(Integer id) {
         Greeting newGreeting=repo.getReferenceById();
         return newGreeting.getContent();
+    }
+    public List<Greeting> getAllData() {
+        List<Greeting> list=repo.findAll();
+        return list;
     }
 }
