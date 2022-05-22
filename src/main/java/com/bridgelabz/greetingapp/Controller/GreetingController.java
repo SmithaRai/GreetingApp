@@ -2,6 +2,7 @@ package com.bridgelabz.greetingapp.Controller;
 
 import com.bridgelabz.greetingapp.Service.GreetingService;
 import com.bridgelabz.greetingapp.model.Greeting;
+import com.bridgelabz.greetingapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,4 +35,18 @@ public class GreetingController {
     public ResponseEntity<String> getMessage(){
         return new ResponseEntity<>(greetingService.getMessage(), HttpStatus.OK);
     }
+
+    @GetMapping("/getGreetingMessage")
+    public ResponseEntity<String>getGreetingMessage(@RequestParam(value="fName",defaultValue="World") String fName,@RequestParam(value="lName",defaultValue="") String lName){
+        return new ResponseEntity<>(greetingService.getGreetingMessage(fName,lName),HttpStatus.OK);
+    }
+    @PostMapping("/post")
+    public ResponseEntity<String> getGreeting(@RequestBody User user){
+        return new ResponseEntity<>(greetingService.postMessage(user),HttpStatus.OK);
+    }
+    @PostMapping("/saveGreeting")
+    public ResponseEntity<Greeting> saveGreeting(@RequestBody Greeting greeting){
+        return new ResponseEntity<>(greetingService.saveMessage(greeting),HttpStatus.OK);
+    }
+
 }
