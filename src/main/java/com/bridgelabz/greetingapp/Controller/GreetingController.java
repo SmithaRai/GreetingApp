@@ -59,4 +59,8 @@ public class GreetingController {
     public ResponseEntity<List<Greeting>> findAllGreeting(){
         return new ResponseEntity<List<Greeting>>(greetingService.getAllData(),HttpStatus.OK);
     }
+    @PutMapping("/editGreetingById/{id}")
+    public ResponseEntity<Greeting> editGreeting(@RequestParam String content,@PathVariable Integer id){
+        return new ResponseEntity<Greeting>(greetingService.editData(id,content),HttpStatus.OK);
+    }
 }

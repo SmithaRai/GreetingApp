@@ -25,7 +25,7 @@ public class Greeting {
         this.content =greeting.content;
     }
 
-    public Greeting() {
+    public Greeting(Integer id, String format) {
 
     }
 
